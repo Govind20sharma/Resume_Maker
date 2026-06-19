@@ -120,13 +120,13 @@ export default function LandingPage() {
             >
               Build My Resume →
             </button>
-            <button
+            {/* <button
               type="button"
               onClick={handlePathB}
               className="flex-1 rounded-md border border-input px-4 py-2.5 text-sm font-medium text-foreground hover:bg-muted/50 transition-colors"
             >
               Improve Existing Resume
-            </button>
+            </button> */}
           </div>
         </form>
       </div>
