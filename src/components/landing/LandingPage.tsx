@@ -50,16 +50,6 @@ export default function LandingPage() {
     router.push('/intake')
   }
 
-  function handlePathB() {
-    if (!role.trim()) {
-      setRoleError('Please enter the role you\'re targeting')
-      return
-    }
-    setRoleError('')
-    setResumeData(buildResumeStub(role.trim(), jd))
-    router.push('/upload')
-  }
-
   return (
     <main className="min-h-screen bg-background flex items-center justify-center px-4">
       <div className="w-full max-w-2xl space-y-8">
