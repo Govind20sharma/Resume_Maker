@@ -1,14 +1,12 @@
 'use client'
 
-export const dynamic = 'force-dynamic'
-
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { supabase } from '@/lib/supabase'
 import { cn } from '@/lib/utils'
 
-export default function SignupPage() {
+function SignupForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const redirect = searchParams.get('redirect') ?? '/dashboard'
@@ -42,7 +40,6 @@ export default function SignupPage() {
       return
     }
 
-    // Supabase may send a confirmation email — check if auto-confirmed
     const { data: { session } } = await supabase.auth.getSession()
     if (session) {
       router.push(redirect)
@@ -155,5 +152,13 @@ export default function SignupPage() {
         </p>
       </div>
     </div>
+  )
+}
+
+export default function SignupPage() {
+  return (
+    <Suspense>
+      <SignupForm />
+    </Suspense>
   )
 }
